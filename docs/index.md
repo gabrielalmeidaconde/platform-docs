@@ -40,7 +40,8 @@ em [Projeto → Teste com HPA](projeto.md#teste-com-hpa).
 - [x] Bottleneck 2: observabilidade (Prometheus + Grafana), em [Meus bottlenecks](bottlenecks.md#observabilidade)
 - [x] Hands-on: [Hands-on](hands-on.md)
 - [x] Uso de IA documentado: [Uso de IA](uso-de-ia.md)
-- [ ] Teste com HPA no EKS (na próxima subida do cluster)
+- [x] Teste de carga no EKS (19/11, sem HPA): [Projeto → Rodada no EKS](projeto.md#rodada-no-eks)
+- [ ] HPA escalando no EKS (precisa de acesso `kubectl` ao cluster)
 - [ ] Vídeo do grupo (1–2 min)
 
 ## O que eu fiz

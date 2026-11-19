@@ -136,11 +136,25 @@ O ensaio achou dois problemas que valem para o EKS:
   com limite de 512 Mi deixa só 128 Mi para o resto da JVM. Até a correção, o roteiro manda reiniciar
   Auth e Account entre uma tomada e outra.
 
-!!! warning "Falta a rodada no EKS"
+### Rodada no EKS
 
-    O teste com HPA no EKS de verdade fica para a próxima subida do cluster, com o mesmo comando
-    (`python scripts/hpa-record.py --base-url http://$ELB --name eks-hpa`). Os números do ensaio não são
-    os do EKS: no kind os nós dividem a CPU da máquina e não há ELB nem internet no caminho.
+Em 19/11, com o cluster no ar, rodei o teste da minha máquina contra o ELB: 200 usuários sem pausa,
+4 min, cenário `auth`. Sem acesso `kubectl` ao cluster (a minha conta da AWS não é a do grupo), o HPA
+não foi criado e o gateway ficou nas 2 réplicas.
+
+| Requisições | req/s | p50 | p95 | p99 | Erros | Réplicas |
+|---:|---:|---:|---:|---:|---:|---|
+| 230.602 | 819 | 193 ms | 370 ms | 630 ms | **0 %** | 2 (fixo) |
+
+Dentro do SLO. Quase toda a latência é rede: com 1 usuário cada requisição já levava ≈ 180 ms (ida e
+volta do Brasil até `us-east-2`), e sob carga a plataforma acrescentou ≈ 13 ms no p50. Detalhes em
+[Resultado no EKS](https://pna26.github.io/platform/devops/load-testing/#resultado-no-eks){target="_blank"}.
+
+!!! warning "Falta o HPA no EKS"
+
+    O vídeo com o HPA escalando no EKS precisa de quem tenha `kubectl` no cluster:
+    `python scripts/hpa-record.py --base-url http://$ELB --name eks-hpa`. Os números do ensaio em kind
+    não são os do EKS: lá os nós dividem a CPU da máquina e não há ELB nem internet no caminho.
 
 ## Observabilidade
 
