@@ -138,23 +138,29 @@ O ensaio achou dois problemas que valem para o EKS:
 
 ### Rodada no EKS
 
-Em 19/11, com o cluster no ar, rodei o teste da minha máquina contra o ELB: 200 usuários sem pausa,
-4 min, cenário `auth`. Sem acesso `kubectl` ao cluster (a minha conta da AWS não é a do grupo), o HPA
-não foi criado e o gateway ficou nas 2 réplicas.
+Em 19/11, com o cluster no ar, o teste rodou duas vezes contra o ELB, com o k6 no Brasil, cenário
+`auth` sem pausa, 4 min:
 
-| Requisições | req/s | p50 | p95 | p99 | Erros | Réplicas |
-|---:|---:|---:|---:|---:|---:|---|
-| 230.602 | 819 | 193 ms | 370 ms | 630 ms | **0 %** | 2 (fixo) |
+| Rodada | Usuários | Requisições | req/s | p95 | p99 | Erros | Réplicas do gateway |
+|---|---:|---:|---:|---:|---:|---:|---|
+| **com HPA** (gravada) | 100 | 149.160 | 533 | 254 ms | 356 ms | **0 %** | **2 → 6** |
+| sem HPA | 200 | 230.602 | 819 | 370 ms | 630 ms | **0 %** | 2 (fixo) |
 
-Dentro do SLO. Quase toda a latência é rede: com 1 usuário cada requisição já levava ≈ 180 ms (ida e
-volta do Brasil até `us-east-2`), e sob carga a plataforma acrescentou ≈ 13 ms no p50. Detalhes em
+A rodada com HPA foi gravada com o meu `hpa-record.py` por quem tinha `kubectl` no cluster (a minha
+conta da AWS não é a do grupo); a sem HPA eu rodei da minha máquina, só com o k6. Com o HPA, o gateway
+foi para 4 réplicas aos 35 s de carga e para 6 aos 52 s, as 6 prontas em ≈ 1,5 min, 3 em cada nó e
+nenhuma sem espaço, como a conta de capacidade previa. A volta para 2 veio ≈ 5,5 min depois do fim da
+carga.
+
+<video controls preload="metadata" width="100%" src="../img/eks-hpa-8x.mp4"></video>
+
+Vídeo 8× mais rápido no EKS; o relógio no canto mostra o tempo real. Grafana do cluster durante o teste:
+
+![Dashboard Store — plataforma no EKS durante o teste com HPA](img/eks-hpa-grafana.png)
+
+As duas rodadas ficaram dentro do SLO. Quase toda a latência é rede: com 1 usuário cada requisição já
+levava ≈ 180 ms (ida e volta do Brasil até `us-east-2`). Detalhes em
 [Resultado no EKS](https://pna26.github.io/platform/devops/load-testing/#resultado-no-eks){target="_blank"}.
-
-!!! warning "Falta o HPA no EKS"
-
-    O vídeo com o HPA escalando no EKS precisa de quem tenha `kubectl` no cluster:
-    `python scripts/hpa-record.py --base-url http://$ELB --name eks-hpa`. Os números do ensaio em kind
-    não são os do EKS: lá os nós dividem a CPU da máquina e não há ELB nem internet no caminho.
 
 ## Observabilidade
 

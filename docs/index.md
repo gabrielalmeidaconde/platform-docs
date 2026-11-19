@@ -28,8 +28,8 @@ implementei, os meus dois bottlenecks, os hands-on e os links de tudo o que foi 
 
 <!-- vídeo: <iframe width="100%" height="470" src="https://www.youtube.com/embed/<id>" allowfullscreen></iframe> -->
 
-O vídeo do **teste de carga com o HPA escalando** o gateway, ensaiado num cluster igual ao do EKS, está
-em [Projeto → Teste com HPA](projeto.md#teste-com-hpa).
+O vídeo do **teste de carga com o HPA escalando** o gateway no EKS está
+em [Projeto → Rodada no EKS](projeto.md#rodada-no-eks).
 
 ## Entregas
 
@@ -40,8 +40,7 @@ em [Projeto → Teste com HPA](projeto.md#teste-com-hpa).
 - [x] Bottleneck 2: observabilidade (Prometheus + Grafana), em [Meus bottlenecks](bottlenecks.md#observabilidade)
 - [x] Hands-on: [Hands-on](hands-on.md)
 - [x] Uso de IA documentado: [Uso de IA](uso-de-ia.md)
-- [x] Teste de carga no EKS (19/11, sem HPA): [Projeto → Rodada no EKS](projeto.md#rodada-no-eks)
-- [ ] HPA escalando no EKS (precisa de acesso `kubectl` ao cluster)
+- [x] Teste de carga no EKS com o HPA escalando de 2 para 6 réplicas (19/11, vídeo e prints): [Projeto → Rodada no EKS](projeto.md#rodada-no-eks)
 - [ ] Vídeo do grupo (1–2 min)
 
 ## O que eu fiz

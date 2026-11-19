@@ -16,9 +16,9 @@ ação externa (repositório, PRs, publicação).
 |---|---|---|
 | Exchange (`pna26/exchange-service`) | Sim: código, testes, Dockerfile, k8s e CI | 21 testes; testado contra a AwesomeAPI real e de ponta a ponta pelo gateway (smoke test) |
 | Cache da cotação | Sim | medido no teste de carga (p95 49 → 4 ms) |
-| Observabilidade (Prometheus + Grafana) | Sim | compose local e o ensaio em kind com os manifestos do EKS |
+| Observabilidade (Prometheus + Grafana) | Sim | compose local, ensaio em kind e o Grafana do EKS durante o teste com HPA (19/11) |
 | Testes de carga (k6) | Scripts sim; **números não** | os números são os que saíram das rodadas na minha máquina; a IA executou e escreveu a análise a partir do k6, do Prometheus e dos logs |
-| Teste com HPA (ensaio em kind, vídeo e prints) | Sim: scripts, execução e análise | ensaio local, não o EKS; a rodada no EKS fica para a próxima subida do cluster |
+| Teste com HPA (ensaio em kind e EKS, vídeo e prints) | Sim: scripts, execução e análise | ensaio em kind em 12/11; no EKS (19/11), o gravador foi rodado por quem tinha `kubectl` no cluster e a IA escreveu a análise |
 | PaaS, custos e SLA | Sim: texto e contas | preços conferidos nas páginas da AWS em 05/11/2026 |
 | Esta documentação individual | Sim | `mkdocs build --strict`; mesmo formato das dos colegas |
 
