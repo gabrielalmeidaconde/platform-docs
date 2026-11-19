@@ -1,0 +1,998 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação individual de Gabriel na disciplina Plataformas, Microsserviços, DevOps e APIs (Insper, 2026.2)">
+      
+      
+        <meta name="author" content="Gabriel Almeida Conde">
+      
+      
+        <link rel="canonical" href="https://gabrielalmeidaconde.github.io/platform-docs/projeto/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../bottlenecks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Projeto - Gabriel — Platform 2026.2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projeto" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Gabriel — Platform 2026.2" class="md-header__button md-logo" aria-label="Gabriel — Platform 2026.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gabriel — Platform 2026.2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projeto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gabrielalmeidaconde/platform-docs" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gabrielalmeidaconde/platform-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Gabriel — Platform 2026.2" class="md-nav__button md-logo" aria-label="Gabriel — Platform 2026.2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gabriel — Platform 2026.2
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gabrielalmeidaconde/platform-docs" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gabrielalmeidaconde/platform-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exchange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testes-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testes de carga
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testes de carga">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bateria-no-compose-05112026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bateria no compose (05/11/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-com-hpa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste com HPA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rodada-no-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rodada no EKS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observabilidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paas-custos-e-sla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PaaS, custos e SLA
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bottlenecks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meus bottlenecks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hands-on/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hands-on
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uso-de-ia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uso de IA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exchange
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testes-de-carga" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testes de carga
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testes de carga">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bateria-no-compose-05112026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bateria no compose (05/11/2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teste-com-hpa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Teste com HPA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rodada-no-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rodada no EKS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observabilidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paas-custos-e-sla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PaaS, custos e SLA
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="projeto">Projeto</h1>
+<p>Uma plataforma de microsserviços para uma loja: o usuário se cadastra, faz login e consulta câmbio
+entre moedas. Todas as requisições entram por um único ponto (o <strong>gateway</strong>, atrás de um balanceador
+<strong>Nginx</strong>), que valida o token JWT e repassa a identidade do usuário para os serviços. Roda com Docker
+Compose na máquina e no <strong>EKS</strong> (Kubernetes da AWS), com deploy pelo <strong>GitHub Actions</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    internet([Internet]) ==&gt; lb["lb · Nginx"]
+    subgraph trusted [Camada confiável]
+        lb ==&gt; gw["gateway&lt;br/&gt;(réplicas)"]
+        gw --&gt; auth
+        gw --&gt; account
+        gw --&gt; exchange
+        gw &lt;--&gt;|token → id| redis[(Redis)]
+        auth --&gt; account
+        account --&gt; db[(PostgreSQL)]
+        account -.-&gt;|evento| kafka[[Kafka]] -.-&gt; notification
+        prom[(Prometheus)] -.-&gt;|raspa| gw
+        prom -.-&gt;|raspa| exchange
+    end
+    exchange --&gt; api3([API de câmbio])</code></pre>
+<table>
+<thead>
+<tr>
+<th>Integrante</th>
+<th>Responsabilidades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leonardo</td>
+<td>Gateway, CI/CD, balanceamento de carga, cache (Redis), varredura de vulnerabilidades, documentação</td>
+</tr>
+<tr>
+<td>Nicolas</td>
+<td>Auth, Account, AWS, EKS, mensageria (Kafka), autorização (RBAC)</td>
+</tr>
+<tr>
+<td><strong>Gabriel</strong> (eu)</td>
+<td>Exchange, testes de carga, observabilidade, PaaS/custos/SLA</td>
+</tr>
+</tbody>
+</table>
+<p>Arquitetura completa: <a href="https://pna26.github.io/platform/arquitetura/" target="_blank">Arquitetura</a>.</p>
+<h2 id="exchange">Exchange</h2>
+<p>Repositório: <a href="https://github.com/pna26/exchange-service" target="_blank">pna26/exchange-service</a> ·
+Página do grupo: <a href="https://pna26.github.io/platform/servicos/exchange/" target="_blank">Exchange</a></p>
+<p>Microsserviço de <strong>câmbio</strong> em <strong>Python (FastAPI)</strong>. Recebe um par de moedas, busca a cotação na
+<a href="https://economia.awesomeapi.com.br" target="_blank">AwesomeAPI</a> e devolve o preço de compra e de venda
+para o usuário logado.</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Cookie: __store_jwt_token=</span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span>localhost:8080/exchange/USD/BRL
+<span class="c1"># { "sell": 5.3942, "buy": 5.3912, "date": "2026-11-05 10:00:00", "id-account": "8f1c..." }</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Quando</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>cotação (do cache ou da API externa)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>moeda que não tem 3 letras (<code>/exchange/US/BRL</code>)</td>
+</tr>
+<tr>
+<td>401</td>
+<td>sem <code>id-account</code>: a requisição não passou pelo gateway</td>
+</tr>
+<tr>
+<td>404</td>
+<td>par que a API externa não conhece</td>
+</tr>
+<tr>
+<td>503</td>
+<td>API externa fora do ar <strong>e</strong> sem cotação recente em cache</td>
+</tr>
+</tbody>
+</table>
+<p>Decisões principais:</p>
+<ul>
+<li><strong>FastAPI + <code>httpx</code> assíncrono:</strong> o serviço é quase só espera pela API externa; enquanto espera, o
+  processo atende outras requisições.</li>
+<li><strong><code>ask</code> → <code>sell</code> e <code>bid</code> → <code>buy</code>:</strong> o preço de venda da casa de câmbio é o maior, por isso <code>sell ≥ buy</code>.</li>
+<li><strong>Cache da cotação por 30 s:</strong> o bottleneck deste serviço (<a href="../bottlenecks/#cache-da-cotacao">Meus bottlenecks</a>).</li>
+<li><strong>1 processo <code>uvicorn</code> por container:</strong> as métricas do <code>prometheus_client</code> ficam na memória do
+  processo; com vários workers, cada coleta do Prometheus veria um processo diferente. O serviço escala
+  com réplicas (2 no k8s).</li>
+<li><strong>Mesmo padrão de segurança dos outros serviços:</strong> imagem <code>python:3.12-slim</code>, usuário 1001, sistema
+  de arquivos somente leitura no k8s; <code>/metrics</code> fica fora de <code>/exchange/**</code>, então só a rede interna vê.</li>
+</ul>
+<p><strong>Testes:</strong> 21 testes com <code>pytest</code> (a API externa é simulada pelo <code>httpx.MockTransport</code>: cache, <em>stampede</em>,
+<em>stale-if-error</em>, erros 400/401/404/503, rótulos das métricas), rodando no CI a cada push. Testado também
+contra a AwesomeAPI real e de ponta a ponta pelo gateway, no <em>smoke test</em> do grupo.</p>
+<h2 id="testes-de-carga">Testes de carga</h2>
+<p>Página do grupo: <a href="https://pna26.github.io/platform/devops/load-testing/" target="_blank">Testes de carga</a></p>
+<p>O teste é um script <strong>k6</strong> (<a href="https://github.com/pna26/platform/blob/main/load/store.js" target="_blank"><code>load/store.js</code></a>)
+que roda em container, com cenários e perfis combináveis:</p>
+<table>
+<thead>
+<tr>
+<th>Cenário</th>
+<th>O que faz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auth</code></td>
+<td><code>GET /auth/me</code> + <code>GET /accounts/{id}</code>: rota protegida (gateway valida o token no Redis ou no Auth)</td>
+</tr>
+<tr>
+<td><code>exchange</code></td>
+<td><code>GET /exchange/USD/BRL</code> e <code>EUR/BRL</code>: mede o cache da cotação</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>POST /auth/login</code>: o caminho caro (hash da senha + emissão do JWT)</td>
+</tr>
+<tr>
+<td><code>mixed</code></td>
+<td>80 % leitura autenticada, 15 % câmbio, 5 % login: o uso "real" da loja</td>
+</tr>
+</tbody>
+</table>
+<p>Perfis: <code>smoke</code>, <code>load</code>, <code>stress</code> (dobra a carga a cada 30 s) e <code>spike</code> (pico repentino). Os
+<em>thresholds</em> do k6 são o SLO do grupo (erros &lt; 1 %, p95 &lt; 500 ms, p99 &lt; 1,5 s), então uma rodada fora do
+SLO termina com erro. O cadastro e o login das contas de teste ficam fora das estatísticas (tag <code>phase</code>),
+e as métricas do k6 vão para o Prometheus e aparecem no Grafana junto com as da plataforma.</p>
+<h3 id="bateria-no-compose-05112026">Bateria no compose (05/11/2026)</h3>
+<p><code>./scripts/load-matrix.sh</code> roda 5 experimentos; os principais números:</p>
+<table>
+<thead>
+<tr>
+<th>Experimento</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache do token (Redis) ligado × desligado</td>
+<td>p95 de 12 → <strong>7 ms</strong>; 99,7 % das validações sem chamar o Auth</td>
+</tr>
+<tr>
+<td>Cache da cotação ligado × desligado</td>
+<td>p95 de 49 → <strong>4 ms</strong> (−92 %)</td>
+</tr>
+<tr>
+<td>1, 2 e 4 réplicas do gateway, 400 usuários com pausa</td>
+<td>≈ 290 req/s nos três: <strong>nessa carga o gateway não é o gargalo</strong></td>
+</tr>
+<tr>
+<td>Saturação, sem pausa</td>
+<td><strong>4.120 req/s</strong> com 1 réplica, mas <strong>0,57 % de erro</strong></td>
+</tr>
+</tbody>
+</table>
+<p>O achado mais importante foi o da saturação: os erros eram todos em <code>GET /auth/me</code>, e o log do Auth
+mostrou o mesmo número de <code>java.net.BindException: Cannot assign requested address</code>. O Auth chama o
+Account pelo Feign <strong>sem pool de conexões</strong>: cada requisição abre uma conexão TCP nova e, a ≈ 4.000 req/s,
+as portas do container acabam. A correção (cliente HTTP com pool, <code>feign-hc5</code>) ficou documentada para o
+Auth. Limitação honesta: tudo rodou na mesma máquina, então os números mostram tendências e gargalos,
+não a capacidade do EKS.</p>
+<h3 id="teste-com-hpa">Teste com HPA</h3>
+<p>O curso pede um vídeo do teste de carga com o <strong>HPA</strong> (Horizontal Pod Autoscaler) escalando. Escrevi o
+roteiro dos três terminais (HPA, pods do gateway, k6) e um gravador
+(<a href="https://github.com/pna26/platform/blob/main/scripts/hpa-record.py" target="_blank"><code>scripts/hpa-record.py</code></a>)
+que roda os três comandos e grava as saídas lado a lado sem depender de janela aberta.</p>
+<p>Em 12/11 o teste foi <strong>ensaiado num cluster kind</strong> (Kubernetes dentro do Docker) montado igual ao
+<code>eks-store</code> (<a href="https://github.com/pna26/platform/blob/main/scripts/kind-up.sh" target="_blank"><code>scripts/kind-up.sh</code></a>):
+Kubernetes 1.37, 2 nós com o alocável de um <code>t3.medium</code>, metrics-server e <strong>os mesmos manifestos</strong> do
+EKS. 100 usuários por 4 min no cenário <code>auth</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Requisições</th>
+<th style="text-align: right;">req/s</th>
+<th style="text-align: right;">p95</th>
+<th style="text-align: right;">p99</th>
+<th style="text-align: right;">Erros</th>
+<th>Réplicas do gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">435.094</td>
+<td style="text-align: right;">1.606</td>
+<td style="text-align: right;">148 ms</td>
+<td style="text-align: right;">196 ms</td>
+<td style="text-align: right;"><strong>0 %</strong></td>
+<td>2 → 6 em ≈ 1 min; de volta a 2 ≈ 5,5 min depois da carga</td>
+</tr>
+</tbody>
+</table>
+<video controls preload="metadata" width="100%" src="https://pna26.github.io/platform/devops/hpa/kind-hpa-8x.mp4"></video>
+
+<p>Vídeo 8× mais rápido; o relógio no canto superior direito mostra o tempo real. Resultado completo e
+linha do tempo: <a href="https://pna26.github.io/platform/devops/load-testing/#ensaio-local-kind" target="_blank">Ensaio local</a>.</p>
+<p>O ensaio achou dois problemas que valem para o EKS:</p>
+<ul>
+<li><strong>As réplicas novas levavam ≈ 1,5 min para receber carga.</strong> O Nginx reaproveita conexões com o
+  Service do gateway, e o Service do Kubernetes balanceia <strong>conexões, não requisições</strong>. Com
+  <code>keepalive_time 10s</code> no Nginx, a divisão caiu para ≈ 35–40 s; o Leonardo aplicou no <code>lb</code> (#10).</li>
+<li><strong>O Auth foi morto por falta de memória</strong> na segunda rodada pesada seguida: <code>-XX:MaxRAMPercentage=75</code>
+  com limite de 512 Mi deixa só 128 Mi para o resto da JVM. Até a correção, o roteiro manda reiniciar
+  Auth e Account entre uma tomada e outra.</li>
+</ul>
+<h3 id="rodada-no-eks">Rodada no EKS</h3>
+<p>Em 19/11, com o cluster no ar, o teste rodou duas vezes contra o ELB, com o k6 no Brasil, cenário
+<code>auth</code> sem pausa, 4 min:</p>
+<table>
+<thead>
+<tr>
+<th>Rodada</th>
+<th style="text-align: right;">Usuários</th>
+<th style="text-align: right;">Requisições</th>
+<th style="text-align: right;">req/s</th>
+<th style="text-align: right;">p95</th>
+<th style="text-align: right;">p99</th>
+<th style="text-align: right;">Erros</th>
+<th>Réplicas do gateway</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>com HPA</strong> (gravada)</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">149.160</td>
+<td style="text-align: right;">533</td>
+<td style="text-align: right;">254 ms</td>
+<td style="text-align: right;">356 ms</td>
+<td style="text-align: right;"><strong>0 %</strong></td>
+<td><strong>2 → 6</strong></td>
+</tr>
+<tr>
+<td>sem HPA</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">230.602</td>
+<td style="text-align: right;">819</td>
+<td style="text-align: right;">370 ms</td>
+<td style="text-align: right;">630 ms</td>
+<td style="text-align: right;"><strong>0 %</strong></td>
+<td>2 (fixo)</td>
+</tr>
+</tbody>
+</table>
+<p>A rodada com HPA foi gravada com o meu <code>hpa-record.py</code> por quem tinha <code>kubectl</code> no cluster (a minha
+conta da AWS não é a do grupo); a sem HPA eu rodei da minha máquina, só com o k6. Com o HPA, o gateway
+foi para 4 réplicas aos 35 s de carga e para 6 aos 52 s, as 6 prontas em ≈ 1,5 min, 3 em cada nó e
+nenhuma sem espaço, como a conta de capacidade previa. A volta para 2 veio ≈ 5,5 min depois do fim da
+carga.</p>
+<video controls preload="metadata" width="100%" src="../img/eks-hpa-8x.mp4"></video>
+
+<p>Vídeo 8× mais rápido no EKS; o relógio no canto mostra o tempo real. Grafana do cluster durante o teste:</p>
+<p><img alt="Dashboard Store — plataforma no EKS durante o teste com HPA" src="../img/eks-hpa-grafana.png" /></p>
+<p>As duas rodadas ficaram dentro do SLO. Quase toda a latência é rede: com 1 usuário cada requisição já
+levava ≈ 180 ms (ida e volta do Brasil até <code>us-east-2</code>). Detalhes em
+<a href="https://pna26.github.io/platform/devops/load-testing/#resultado-no-eks" target="_blank">Resultado no EKS</a>.</p>
+<h2 id="observabilidade">Observabilidade</h2>
+<p>Página do grupo: <a href="https://pna26.github.io/platform/bottlenecks/observability/" target="_blank">Observabilidade</a></p>
+<p>Prometheus e Grafana no compose e no EKS, com o dashboard versionado em JSON. É um dos meus
+bottlenecks: detalhes em <a href="../bottlenecks/#observabilidade">Meus bottlenecks</a>.</p>
+<h2 id="paas-custos-e-sla">PaaS, custos e SLA</h2>
+<p>Página do grupo: <a href="https://pna26.github.io/platform/devops/custos-sla/" target="_blank">PaaS, custos e SLA</a></p>
+<p><strong>Custo do que entregamos no EKS</strong> (<code>us-east-2</code>, preços conferidos em 05/11/2026): ≈ <strong>US$ 0,29 por
+hora</strong>, ≈ <strong>US$ 214 por mês</strong> ligado direto. Os itens maiores são fixos: control plane do EKS (US$ 73/mês),
+2 nós <code>t3.medium</code> (US$ 61) e o NAT gateway (US$ 33, o item "escondido" mais caro). Com o budget de
+US$ 20/mês, são ≈ 70 horas de cluster ligado, por isso a regra do grupo é subir só para testar e apagar
+no fim.</p>
+<div class="admonition danger">
+<p class="admonition-title">Armadilha: suporte estendido do EKS</p>
+<p>Os US$ 0,10/h do control plane só valem enquanto a versão do Kubernetes está no suporte padrão.
+Depois, o cluster entra sozinho no suporte estendido: <strong>US$ 0,60/h</strong>, seis vezes mais.</p>
+</div>
+<p><strong>PaaS:</strong> os mesmos containers no ECS Fargate custariam ≈ US$ 105/mês, no App Runner ≈ 120 e no
+Render/Railway ≈ 60–150. Para <strong>esta</strong> plataforma (pequena, carga baixa), uma PaaS ou o Fargate sairia
+mais barato e com menos operação; o EKS compensa quando muitos serviços dividem os mesmos nós ou quando
+se precisa de recursos do Kubernetes, como o HPA.</p>
+<p><strong>SLA e SLO:</strong> multiplicando o SLA de cada peça da AWS que usamos (EKS, ELB, nós em 2 zonas e o RDS
+single-AZ), a disponibilidade composta fica em ≈ <strong>99,44 %</strong> ao mês; com o RDS Multi-AZ, ≈ 99,89 %. Por
+isso o SLO do grupo é <strong>99,5 %</strong> de requisições sem erro 5xx no gateway (≈ 3 h 39 min de orçamento de
+erro por mês), medido no Prometheus; para chegar a 99,9 %, o primeiro passo seria o RDS Multi-AZ.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.instant", "navigation.top", "navigation.sections", "navigation.indexes"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
